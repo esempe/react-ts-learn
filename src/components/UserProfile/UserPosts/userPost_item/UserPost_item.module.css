@@ -1,0 +1,32 @@
+.post {
+    display: flex;
+
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.postAvatar {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background-color: #FFC82C;
+}
+.postLikes{
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    align-items: center;
+    background: #13CE66;
+    border-radius: 50px;
+    width: 50%;
+    height: 25px;
+}
+.postText {
+    display: flex;
+    margin-left: 50px;
+}

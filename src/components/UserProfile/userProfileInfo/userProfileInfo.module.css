@@ -1,0 +1,42 @@
+.profileInfoWrapper {
+    margin-top: 15px;
+    display: flex;
+}
+
+.avatar {}
+
+.avatar img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+}
+
+.userInfo {
+    margin-left: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.userInfo_name {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+.userInfo_dob {
+    font-size: 25px;
+}
+
+.userInfo_city {
+    font-size: 25px;
+}
+
+.userInfo_EDU {
+    font-size: 25px;
+}
+
+.userInfo_website {
+    font-size: 25px;
+}

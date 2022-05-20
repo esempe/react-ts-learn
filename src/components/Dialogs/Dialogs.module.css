@@ -1,0 +1,103 @@
+.tittle {
+    font-size: 39px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.dialogsWrapper {
+    position: relative;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.dialogsWrapper::before{
+    content: '';
+    position: absolute;
+    left: 25%;
+    width: 2px;
+    height: 100%;
+    background-color: #E5E9F3;
+}
+.conversationsList {
+}
+
+.conversationItem {
+    font-size: 30px;
+    color: #878896;
+    margin-bottom: 15px;
+}
+.conversationItem::before{
+    content: '•';
+    margin-right: 15px;
+}
+.active {
+    font-size: 30px;
+    color: #60606E;
+    transform: scale(1,3);
+    margin-bottom: 15px;
+}
+
+.conversation {
+
+}
+
+.messagesWrapper {
+    display: flex;
+    margin-bottom: 35px
+}
+
+.senderInfo {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.senderAvatar {
+    color: #878896;
+    margin-bottom:7px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: #E5E9F3;
+}
+
+.senderNickname {
+    display: flex;
+    color: #878896;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageItem {
+    position:relative;
+    padding: 15px;
+    border: 2px solid #E5E9F3;
+    border-radius: 15px;
+    width: 350px;
+    margin-right: 100px;
+    color: #878896;
+}
+
+.messageItem::before{
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 32px;
+    top: 9px;
+    transform: rotate(-29deg);
+    left: -32px;
+    background-color: #E5E9F3;
+}
+.messageItem::after{
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 30px;
+    top: 24px;
+    transform: rotate(29deg);
+    left: -32px;
+    background-color: #E5E9F3;
+}

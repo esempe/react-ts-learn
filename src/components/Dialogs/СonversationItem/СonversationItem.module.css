@@ -1,0 +1,25 @@
+.conversationItem {
+    font-size: 30px;
+    color: #878896;
+    text-decoration: none;
+    margin-bottom: 15px;
+
+}
+.conversationItem::before{
+    content: '•';
+    text-decoration: none;
+    margin-right: 15px;
+
+}
+.active::before{
+    content: '•';
+    text-decoration: none;
+    margin-right: 15px;
+}
+.active{
+    color: #fa1515;text-decoration: none;
+    font-size: 35px;
+    transform: scale(1.2);
+}
+
+

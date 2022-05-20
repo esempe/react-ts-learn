@@ -1,0 +1,8 @@
+.UsersPosts{
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 50px;
+    gap: 70px;
+    width: 80%;
+}

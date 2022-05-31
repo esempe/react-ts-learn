@@ -1,15 +1,18 @@
 import React from 'react'
-import { UserPosts } from './UserPosts/UserPosts'
+import { UserPosts} from './UserPosts/UserPosts'
 import style from './UserProfile.module.css'
 import UserProfileInfo from './userProfileInfo/UserProfileInfo'
 import UserWallpaper from './userWallpaper/UserWallpaper'
 import UserTextareaContainer from "./userTextarea/UserTextareaContainer";
+import {postTextType} from "../../redux/state";
 
 type UserProfileProps = {
-
+    postsData: Array<postTextType>
 }
 
-const UserProfile = (props:any) => {
+const UserProfile = (props:UserProfileProps) => {
+
+
 
     return (
         <div className={style.contentWrapper}>
@@ -21,7 +24,7 @@ const UserProfile = (props:any) => {
             <UserTextareaContainer
 
             />
-            <UserPosts/>
+            <UserPosts postsData={props.postsData}/>
         </div>
     )
 }

@@ -7,13 +7,17 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import {DialogsType, postTextType, rootStateTypes} from "./redux/state";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 
-/*
-*
-* */
-function App() {
+
+type AppPropsType ={
+    state:rootStateTypes
+}
+
+
+function App(props:AppPropsType) {
     return (
         <div className="App">
             <div className="global-container">
@@ -22,9 +26,10 @@ function App() {
                     <SideBar/>
                     <div className="main-container">
                         <Routes>
-                            <Route path='/profile' element={
-                                <UserProfile/>}/>
-                            <Route path='/dialogs/*' element={<Dialogs/>}/>
+                            <Route path='/profile'
+                                   element={<UserProfile postsData={props.state.profilePage.postsData}/>}/>
+                            <Route path='/dialogs/*'
+                                   element={<Dialogs dialogs={props.state.dialogsData}/>}/>
                             <Route path='/feed' element={<News/>}/>
                             <Route path='/music' element={<Music/>}/>
                             <Route path='/settings' element={<Settings/>}/>
@@ -33,7 +38,9 @@ function App() {
 
                 </main>
 
-                1
+                <div className="contrainer">
+
+                </div>
             </div>
         </div>
     );

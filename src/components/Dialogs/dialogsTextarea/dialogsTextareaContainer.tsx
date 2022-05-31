@@ -17,8 +17,7 @@ const DialogsTextareaContainer = (props:any) => {
     ////////
 
     return (
-        <DialogsTextarea
-        />
+        <DialogsTextarea/>
     )
 }
 

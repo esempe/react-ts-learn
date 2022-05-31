@@ -2,7 +2,12 @@ import React from 'react';
 import style from "./СonversationItem.module.css";
 import {NavLink} from "react-router-dom";
 
-const СonversationItem = (props:any) => {
+type props ={
+    name:string;
+    id:number;
+}
+
+const СonversationItem = (props:props) => {
    let LinkActive = ({isActive}:any)=> {
         return isActive ? style.active : style.conversationItem;
    }

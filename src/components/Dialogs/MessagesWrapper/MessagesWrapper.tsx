@@ -1,7 +1,10 @@
 import React from 'react';
 import style from "./MessageWrapper.module.css";
 
-const MessagesWrapper = (props:any) => {
+type props = {
+    message:string;
+}
+const MessagesWrapper = (props:props) => {
 
     return (
         <div className={style.messagesWrapper}>

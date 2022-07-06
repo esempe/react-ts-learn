@@ -4,10 +4,11 @@ import style from './UserProfile.module.css'
 import UserProfileInfo from './userProfileInfo/UserProfileInfo'
 import UserWallpaper from './userWallpaper/UserWallpaper'
 import UserTextareaContainer from "./userTextarea/UserTextareaContainer";
-import {postTextType} from "../../redux/state";
+import {AddMessageActionType, AddPostActionType, postTextType} from "../../redux/storeOLD";
 
 type UserProfileProps = {
     postsData: Array<postTextType>
+    dispatch:(action:AddPostActionType | AddMessageActionType)=>void
 }
 
 const UserProfile = (props:UserProfileProps) => {
@@ -21,10 +22,7 @@ const UserProfile = (props:UserProfileProps) => {
             <div className={style.UserTextarea_tittle}>
                 My posts
             </div>
-            <UserTextareaContainer
-
-            />
-            <UserPosts postsData={props.postsData}/>
+            <UserPosts dispatch={props.dispatch} postsData={props.postsData}/>
         </div>
     )
 }

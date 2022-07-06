@@ -9,10 +9,9 @@ import SideBarFriendsList from "./SideBarFreindsList/SideBarFriendsList";
 
 const SideBar = (props:any) => {
 
-    let LinkActive = ({isActive}:any) => {
+    const LinkActive = ({isActive}:any) => {
         return isActive ? style.active : style.text;
     }
-
     return (
         <div className={style.SideNav}>
             <div className="">

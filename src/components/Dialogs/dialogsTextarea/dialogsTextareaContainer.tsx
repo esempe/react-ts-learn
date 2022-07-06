@@ -7,12 +7,12 @@ import DialogsTextarea from "./dialogsTextarea";
 const DialogsTextareaContainer = (props:any) => {
     /////////
 /*    let sendMessage = () => {
-        props.store.dispatch(sendMessageActionCreator());
+        props.storeOLD.dispatch(sendMessageActionCreator());
     }
 
     let onNewMessageChange = (newMessage) => {
         let action = updateNewMessegeActionCreator(newMessage)
-        props.store.dispatch(action);
+        props.storeOLD.dispatch(action);
     }*/
     ////////
 

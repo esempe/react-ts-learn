@@ -7,17 +7,20 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {DialogsType, postTextType, rootStateTypes} from "./redux/state";
 import Dialogs from "./components/Dialogs/Dialogs";
+import {Dispatch} from "redux";
+import {AppRootStateType, StoreType} from "./redux/store";
 
 
-
-type AppPropsType ={
-    state:rootStateTypes
+type AppPropsType = {
+    state?: AppRootStateType;
+    dispatch?: Dispatch
+    store: StoreType
 }
 
 
-function App(props:AppPropsType) {
+function App(props: AppPropsType) {
+    let a = props.store.getState()
     return (
         <div className="App">
             <div className="global-container">
@@ -27,9 +30,13 @@ function App(props:AppPropsType) {
                     <div className="main-container">
                         <Routes>
                             <Route path='/profile'
-                                   element={<UserProfile postsData={props.state.profilePage.postsData}/>}/>
+                                   element={<UserProfile
+                                       dispatch={props.store.dispatch.bind(props.store)}
+                                       postsData={props.store.getState().ProfilePage.postsData}/>}/>
                             <Route path='/dialogs/*'
-                                   element={<Dialogs dialogs={props.state.dialogsData}/>}/>
+                                   element={<Dialogs
+                                       dispatch={props.store.dispatch.bind(props.store)}
+                                       dialogs={props.store.getState().DialogsPage}/>}/>
                             <Route path='/feed' element={<News/>}/>
                             <Route path='/music' element={<Music/>}/>
                             <Route path='/settings' element={<Settings/>}/>

@@ -1,28 +1,30 @@
 import React from 'react'
-import { UserPosts} from './UserPosts/UserPosts'
 import style from './UserProfile.module.css'
 import UserProfileInfo from './userProfileInfo/UserProfileInfo'
 import UserWallpaper from './userWallpaper/UserWallpaper'
-import UserTextareaContainer from "./userTextarea/UserTextareaContainer";
-import {AddMessageActionType, AddPostActionType, postTextType} from "../../redux/storeOLD";
+
+import {UserPostsContainer} from "./UserPosts/UserPostsContainer";
+import {StoreType} from "../../redux/store";
+import {AddPostActionType, postTextType} from "../../redux/profileReducer";
+import {AddMessageActionType} from "../../redux/dialogsReducer";
 
 type UserProfileProps = {
-    postsData: Array<postTextType>
-    dispatch:(action:AddPostActionType | AddMessageActionType)=>void
+    store: StoreType
+    postsData?: Array<postTextType>
+    dispatch?: (action: AddPostActionType | AddMessageActionType) => void
 }
 
-const UserProfile = (props:UserProfileProps) => {
-
+const UserProfile = (props: UserProfileProps) => {
 
 
     return (
         <div className={style.contentWrapper}>
             <UserWallpaper/>
-            <UserProfileInfo />
+            <UserProfileInfo/>
             <div className={style.UserTextarea_tittle}>
                 My posts
             </div>
-            <UserPosts dispatch={props.dispatch} postsData={props.postsData}/>
+            <UserPostsContainer store={props.store}/>
         </div>
     )
 }

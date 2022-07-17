@@ -21,9 +21,12 @@ const SideBar = (props:any) => {
                 <NavLink to='dialogs/' className={LinkActive}>Messeges</NavLink>
             </div>
             <div className="">
+                <NavLink to='/users' className={LinkActive}>Find user</NavLink>
+            </div>
+            <div className="">
                 <NavLink to='/feed' className={LinkActive}>News</NavLink>
             </div>
-            <div className=" ">
+            <div>
                 <NavLink to='/music' className={LinkActive}>Music</NavLink>
             </div>
             <div className={style.itemset }>

@@ -1,3 +1,4 @@
+/*
 import {ProfileReducer} from "./profileReducer";
 import {DialogsReducer} from "./dialogsReducer";
 
@@ -6,13 +7,13 @@ export type postTextType = {
     message: string;
     likeCount: string;
 }
-export type conversationsType = {
+ type conversationsType = {
     id: number, name: string
 }
-export type messageType = {
+ type messageType = {
     id: number, message: string
 }
-export type DialogsType = {
+ type DialogsType = {
     messageData: Array<messageType>
     conversationsData: Array<conversationsType>
     newMessageText: string
@@ -28,7 +29,7 @@ export type AddPostActionType = {
     type: 'ADD-POST'
     postMessage: string
 }
-export type AddMessageActionType = {
+export type AddMessageActionType1 = {
     type: 'ADD-MESSAGE'
     messageBody: string
 }
@@ -39,7 +40,7 @@ export type storeRootType = {
     //addMassage: (messageBody: string) => void
     subscribe: (callback: () => void) => void
     _callSubscriber: () => void
-    dispatch: (action: AddPostActionType | AddMessageActionType) => void
+    dispatch: (action: AddPostActionType | AddMessageActionType1) => void
 }
 //////////////////////////////////типы
 
@@ -104,34 +105,5 @@ export const storeOLD: storeRootType = {
 
 
 
-
-const ADD_POST = "ADD-POST";
-const ADD_MESSAGE = 'ADD-MESSAGE';
-
-/*        if (action.type == 'ADD-POST') {
-            const newPost: postTextType =
-                {
-                    id: 1,
-                    message: action.postMessage,
-                    likeCount: '0'
-                }
-            let allPosts = this._state.profilePage.postsData
-
-            if (newPost.message.trim()) {
-                allPosts = [newPost, ...allPosts]
-            }
-            this._state.profilePage.postsData = allPosts
-            this._callSubscriber()
-        } else if (action.type == 'ADD-MESSAGE') {
-            let newMessage: messageType =
-                {
-                    id: 1,
-                    message: action.messageBody,
-                }
-            let allMessages = this._state.dialogsData.messageData
-            if (newMessage.message.trim()) {
-                allMessages = [...allMessages, newMessage]
-            }
-            this._state.dialogsData.messageData = allMessages
-            this._callSubscriber()
-        }*/
+*/
+export {}

@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './UserPost_item.module.css'
 const UserPost_item = (props:any) => {
+
     return (
         <div>
             <div className={style.post}>

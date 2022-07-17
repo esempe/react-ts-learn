@@ -1,0 +1,82 @@
+/*.title{
+    font-size: 39px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    color: #878896;
+}*/
+.userWrapper {
+    display: flex;
+    margin-bottom: 30px;
+    color: #878896;
+    gap: 25px;
+
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.leftSide button{
+    background-color: #13CE66;
+    border: none;
+    color: white;
+    width: 120px;
+    font-size: 26px;
+}
+.avatar img {
+    color: #878896;
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #E5E9F3;
+}
+
+/*.followButton {
+    background-color: #13CE66;
+    border: none;
+    color: white;
+    width: 120px;
+    font-size: 26px;
+}*/
+
+.rightSide {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #E5E9F3;
+    border-radius: 15px;
+    width: 70%;
+    padding: 15px;
+}
+
+.fullNameStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fullName {
+    font-weight: bold;
+}
+
+.status {
+}
+
+.location {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.country {
+
+}
+
+.city {
+    text-align: right;
+}

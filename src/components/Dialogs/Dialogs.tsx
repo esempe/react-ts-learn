@@ -2,30 +2,25 @@ import React, {ChangeEvent, useState} from 'react';
 import style from './Dialogs.module.css'
 import СonversationItem from "./СonversationItem/СonversationItem";
 import MessagesWrapper from "./MessagesWrapper/MessagesWrapper";
-import { AddMessageActionType, AddPostActionType, DialogsType} from "../../redux/storeOLD";
-import {addMessageActionCreator} from "../../redux/dialogsReducer";
+import {mapDispatchToPropsType, mapStateToPropsType} from './DialogsContainer';
 
 
-type DialogsPropsType = {
-    dialogs: DialogsType
-    dispatch: (action: AddPostActionType | AddMessageActionType) => void
-}
+type DialogsPropsType = mapStateToPropsType & mapDispatchToPropsType
 
-const Dialogs = (props: DialogsPropsType) => {
-    const [message,setMessage] = useState<string>('')
-
+export const Dialogs = (props: DialogsPropsType) => {
+    const [message, setMessage] = useState<string>('')
     let messageElements = props.dialogs.messageData.map((message) =>
-        <MessagesWrapper message={message.message}/>
+        <MessagesWrapper key={Math.random()} message={message.message}/>
     );
     let conversationsElements = props.dialogs.conversationsData.map((conversation) =>
-        <СonversationItem name={conversation.name} id={conversation.id}/>
+        <СonversationItem key={Math.random()} name={conversation.name} id={conversation.id}/>
     );
 
-    const onChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.currentTarget.value)
     }
-    const onClickHandler = (e:React.MouseEvent<HTMLDivElement>) => {
-        props.dispatch(addMessageActionCreator(message))
+    const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        props.addMessage(message)
         setMessage('')
     }
     return (
@@ -45,7 +40,7 @@ const Dialogs = (props: DialogsPropsType) => {
                             value={message}
                             className={style.UserTextarea_input}/>
                         <div className={style.UserTextarea_button}
-                        onClick={onClickHandler}
+                             onClick={onClickHandler}
                         >
                             Send
                         </div>
@@ -55,5 +50,4 @@ const Dialogs = (props: DialogsPropsType) => {
         </div>
     )
 }
-export default Dialogs;
 

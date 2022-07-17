@@ -1,9 +1,13 @@
-import {AddMessageActionType, AddPostActionType, postTextType, ProfilePage} from "./storeOLD";
+
 
 const ADD_POST = "ADD-POST";
 
-
-
+export type postTextType = {
+    id: number;
+    message: string;
+    likeCount: string;
+}
+// export type ProfilePage = Array<postTextType>;
 
 const initialState ={
         postsData: [
@@ -18,29 +22,29 @@ const initialState ={
         ],
     }
 
-
-export const ProfileReducer = (state:ProfilePage = initialState,action: AddPostActionType | AddMessageActionType):ProfilePage => {
+export type initialStateProfileReducerType = typeof initialState
+export const ProfileReducer = (state:initialStateProfileReducerType = initialState,
+                               action: AddPostActionType):initialStateProfileReducerType => {
     switch (action.type){
         case ADD_POST :
             const newPost: postTextType =
                 {
-                    id: 1,
+                    id: 9,
                     message: action.postMessage,
                     likeCount: '0'
                 }
-            let allPosts = state.postsData
+            if(newPost.message.trim()){
+                return {...state,postsData: [newPost,...state.postsData] };
+            }else return state;
 
-            if (newPost.message.trim()) {
-                allPosts = [newPost, ...allPosts]
-            }
-            state.postsData = allPosts
-            return state;
+
         default:
             return state;
     }
 }
+export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 
-export const addPostActionCreator = (postMessage: string): AddPostActionType => ({
+export const addPostActionCreator = (postMessage: string) => ({
     type: ADD_POST,
     postMessage: postMessage
-})
+} as const)

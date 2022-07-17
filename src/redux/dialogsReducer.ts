@@ -1,9 +1,16 @@
-import {AddMessageActionType, AddPostActionType, DialogsType, messageType} from "./storeOLD";
 const ADD_MESSAGE = 'ADD-MESSAGE';
 
-export const addMessageActionCreator = (message: string): AddMessageActionType => ({
-    type: ADD_MESSAGE, messageBody: message
-})
+export type conversationsType = {
+    id: number, name: string
+}
+export type messageType = {
+    id: number, message: string
+}
+export type DialogsType = {
+    messageData: Array<messageType>
+    conversationsData: Array<conversationsType>
+    newMessageText: string
+}
 
 const initialState = {
     messageData: [  //входные данные
@@ -28,8 +35,11 @@ const initialState = {
     newMessageText: '1'
 }
 
+export type initialStateDialogsReducerType = typeof initialState
 
-export const DialogsReducer = (state:DialogsType = initialState,action: AddPostActionType | AddMessageActionType):DialogsType => {
+
+export const DialogsReducer = (state: initialStateDialogsReducerType = initialState,
+                               action: AddMessageActionType): initialStateDialogsReducerType => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage: messageType =
@@ -37,14 +47,18 @@ export const DialogsReducer = (state:DialogsType = initialState,action: AddPostA
                     id: 1,
                     message: action.messageBody,
                 }
-            let allMessages = state.messageData
             if (newMessage.message.trim()) {
-                allMessages = [...allMessages, newMessage]
-            }
-            state.messageData = allMessages
-            return state;
+                return {...state, messageData: [...state.messageData, newMessage]};
+            } else return state;
+
         default:
             return state;
     }
 
 }
+
+export type AddMessageActionType = ReturnType<typeof addMessageActionCreator>
+
+export const addMessageActionCreator = (message: string) => ({
+    type: ADD_MESSAGE, messageBody: message
+} as const)

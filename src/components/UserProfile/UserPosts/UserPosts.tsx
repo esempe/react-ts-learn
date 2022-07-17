@@ -1,20 +1,16 @@
 import React, {ChangeEvent, useState} from 'react'
 import style from './UserPosts.module.css'
 import UserPost_item from './userPost_item/UserPost_item'
-import {AddMessageActionType, AddPostActionType, postTextType} from "../../../redux/storeOLD";
-import {addPostActionCreator} from "../../../redux/profileReducer";
+import {mapDispatchToPropsType, mapStateToPropsType} from "./UserPostsContainer";
 
 
-export type UserPostsPropsType = {
-    postsData: Array<postTextType>
-    dispatch: (action: AddPostActionType | AddMessageActionType) => void
-}
+export type UserPostsPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 export const UserPosts = (props: UserPostsPropsType) => {
     const [text, setText] = useState<string>('')
 
     const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-        props.dispatch(addPostActionCreator(text))
+        props.addPost(text)
         setText('')
     }
 
@@ -23,6 +19,7 @@ export const UserPosts = (props: UserPostsPropsType) => {
     }
     let postElements = props.postsData.map((post) =>
         <UserPost_item
+            key={Math.random()}
             text={post.message}
             likeCount={post.likeCount}/>
     )

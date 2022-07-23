@@ -2,8 +2,7 @@ import React from 'react';
 
 import s from './UserCard.module.css'
 import {UserType} from "../../../redux/usersReducer";
-import {MapDispatchToPropsType} from "../UsersContainer";
-
+import userWithoutAva from "../../../assets/images/userWithoutAva.png"
 type UserCardDispatchPropsType ={
     follow:(userID:number)=> void;
     unfollow:(userID:number)=> void;
@@ -12,31 +11,32 @@ type UserCardPropsType = UserType & UserCardDispatchPropsType
 
 
 export const UserCard: React.FC<UserCardPropsType> = (props) => {
-    const {userId, avatarURL, followed, fullName, status, location, follow, unfollow} = props;
-    const {country, city} = location
+    const {id, photos, followed, name, status,  follow, unfollow} = props;
+    //const {country, city} = location
     const onFollowClickHandler = () => {
         console.log(15)
-        follow(userId)
+        follow(id)
     }
-    //() => follow(userId)
+
+
     return (
         <div className={s.userWrapper}>
             <div className={s.leftSide}>
-                <div className={s.avatar}><img src={avatarURL}/></div>
+                <div className={s.avatar}><img src={photos.small ? photos.small : userWithoutAva}/></div>
                 {followed
                     ?
                     <button onClick={onFollowClickHandler}>Follow</button>
                     :
-                    <button onClick={()=>unfollow(userId)}>Unfollow</button>}
+                    <button onClick={()=>unfollow(id)}>Unfollow</button>}
             </div>
             <div className={s.rightSide}>
                 <div className={s.fullNameStatus}>
-                    <div className={s.fullName}>{fullName}</div>
+                    <div className={s.fullName}>{name}</div>
                     <div className={s.status}>{status}</div>
                 </div>
                 <div className={s.location}>
-                    <div className={s.country}>{country},</div>
-                    <div className={s.city}>{city}</div>
+                    <div className={s.country}>{"country"},</div>
+                    <div className={s.city}>{"city"}</div>
                 </div>
             </div>
         </div>

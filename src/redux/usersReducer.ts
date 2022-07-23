@@ -10,13 +10,18 @@ export type UserLocationType = {
     country: string,
     city: string,
 }
+export type photoType ={
+    small:string;
+    large:string;
+}
+
 export type UserType = {
-    userId: number,
-    avatarURL: string,
+    id: number,
+    photos: photoType,
     followed: boolean,
-    fullName: string,
+    name: string,
     status: string,
-    location: UserLocationType
+    //location: UserLocationType
 }
 
 
@@ -34,13 +39,14 @@ export const usersReducer = (state: UserStateType = initialState, action: AllAct
     switch (action.type) {
 
         case FOLLOW: {
-            return {...state, users: state.users.map(el => el.userId === action.userID ? {...el, followed:!el.followed} : el)};
+            return {...state, users: state.users.map(el => el.id === action.userID ? {...el, followed:!el.followed} : el)};
         }
         case UNFOLLOW: {
 
-            return {...state, users: state.users.map(el => el.userId === action.userID ? {...el, followed:!el.followed} : el)}
+            return {...state, users: state.users.map(el => el.id === action.userID ? {...el, followed:!el.followed} : el)}
         }
         case SET_USERS: {
+            console.log(action.users)
             return {...state, users: [...state.users, ...action.users]};
         }
         default:
